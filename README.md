@@ -1,2 +1,2 @@
-# aatu.github.io
+# aatu
 Aatu's website
