@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tmi Aatu Mattila</title>
+    <meta name="description" content="Tmi Aatu Mattila tarjoaa auto- ja konehuoltoa, pienkonehuoltoa, hitsauksia sekä metsä- ja kunnossapitotöitä Velaatassa. Luotettavaa palvelua kokemuksella.">
+    <meta name="keywords" content="Tmi Aatu Mattila, Aatu Mattila, Tmi AM, auto- ja konehuolto, pienkonehuolto, hitsaus, metsätyöt, kunnossapito, raivaustyöt, Velaatta, korjauspalvelut">
+    <meta name="author" content="Tmi Aatu Mattila">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Tmi Aatu Mattila - Auto- ja konehuoltoa, hitsausta ja metsätöitä Velaatassa">
+    <meta property="og:description" content="Tarjoamme auto- ja konehuoltoa, pienkonehuoltoa, hitsauksia sekä metsä- ja kunnossapitotöitä. Ota yhteyttä ja kysy lisää!">
+    <meta property="og:image" content="https://ManuMatt.github.io/tmi-aatu-mattila/images/logo.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ManuMatt.github.io/tmi-aatu-mattila/">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <button id="theme-toggle" aria-label="Vaihda teema">🌙 Tumma teema</button>
+        <img src="images/logo.jpg" alt="Tmi Aatu Mattila logo" class="logo">
+        <h1>Tmi Aatu Mattila</h1>
+        <p class="company-info">
+            Y-tunnus: 3491996-3 | Puhelin: <a href="tel:+358503554210">050 355 4210</a><br>
+            Sähköposti: <a href="mailto:tmiaatumattila@gmail.com">TmiAatuMattila@gmail.com</a>
+        </p>
+    </header>
+
+    <main>
+        <section class="fade-in">
+            <h2>Auto- ja konehuolto</h2>
+            <img src="images/auto_konehuolto.jpg" alt="Auto- ja konehuolto">
+            <p>Tarjoamme kattavat huolto- ja korjauspalvelut autoille, traktoreille ja muille työkoneille. Ammattitaitoista ja luotettavaa palvelua nopeasti ja joustavasti.</p>
+        </section>
+
+        <section class="fade-in">
+            <h2>Pienkonehuolto</h2>
+            <img src="images/pienkonehuolto.jpg" alt="Pienkonehuolto">
+            <p>Huollamme ja korjaamme pienkoneet, kuten moottorisahat, ruohonleikkurit ja mönkijät. Käyttövarmuutta koneellesi edullisesti ja nopeasti.</p>
+        </section>
+
+        <section class="fade-in">
+            <h2>Hitsaukset</h2>
+            <img src="images/hitsaus.jpg" alt="Hitsaukset">
+            <p>Toteutamme erilaiset hitsaustyöt ammattitaidolla. Sekä korjaus- että yksittäisvalmistukset onnistuvat.</p>
+        </section>
+
+        <section class="fade-in">
+            <h2>Metsä-, polttopuu- ja raivaustyöt</h2>
+            <img src="images/metsatyot.jpg" alt="Metsätyöt">
+            <p>Teemme metsätyöt, polttopuiden valmistuksen ja raivaukset tehokkaasti. Käytössä ammattivälineet ja kokemusta metsätöistä jo vuosien ajalta.</p>
+        </section>
+
+        <section class="fade-in">
+            <h2>Kunnossapito ja muut työt</h2>
+            <img src="images/kunnossapito.jpg" alt="Kunnossapitotyöt">
+            <p>Tarjoamme piha-alueiden kunnossapitoa, nurmikonleikkuuta ja muita kausitöitä sopimuksen mukaan. Ota yhteyttä ja räätälöidään palvelu tarpeesi mukaan.</p>
+        </section>
+    </main>
+
+    <footer class="fade-in">
+        <h3>Ota yhteyttä ja kysy lisää!</h3>
+        <p>Puhelin: <a href="tel:+358503554210">050 355 4210</a></p>
+        <p>Sähköposti: <a href="mailto:tmiaatumattila@gmail.com">TmiAatuMattila@gmail.com</a></p>
+        <p>34270 Velaatta</p>
+    </footer>
+
+    <script>
+        // Fade-in animaatio
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+        faders.forEach(fader => appearOnScroll.observe(fader));
+
+        // Teeman vaihto (vaalea/tumma)
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Tarkistetaan paikallinen tallennus
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️ Vaalea teema';
+        }
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const darkModeOn = body.classList.contains('dark-mode');
+            toggleButton.textContent = darkModeOn ? '☀️ Vaalea teema' : '🌙 Tumma teema';
+            localStorage.setItem('theme', darkModeOn ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
